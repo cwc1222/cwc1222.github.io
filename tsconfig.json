@@ -14,9 +14,9 @@
     "isolatedModules": true,
     "noEmit": true,
 
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@style/*": ["assets/styles/*"]
+      "@static/*": ["static/*"]
     },
 
     /* Linting */

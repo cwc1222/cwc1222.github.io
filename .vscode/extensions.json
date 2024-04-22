@@ -12,6 +12,7 @@
 		"bierner.lit-html",
 		"runem.lit-plugin",
 		// Others
+		"tomoki1207.pdf",
 		"IronGeek.vscode-env",
 		"DanielSanMedium.dscodegpt",
 	],
