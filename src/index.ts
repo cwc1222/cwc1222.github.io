@@ -1,6 +1,7 @@
 import { LitElement, html, unsafeCSS } from 'lit';
-import {query} from 'lit/decorators/query.js';
 import { customElement, state } from 'lit/decorators.js';
+import {query} from 'lit/decorators/query.js';
+import { Router } from '@lit-labs/router';
 
 //import "@static/scss/index.scss";
 //import "@static/scss/fontawesome.scss"
@@ -10,15 +11,25 @@ import styles from '@static/scss/index.scss?inline';
 import avatar from "@static/image/avatar_500x500.webp";
 
 import "./articles/list.js"
+import "./about/about.js"
 
 type BlogPage = {
   name: string;
-  link: string;
+  href: string;
 }
 
-@customElement('lit-app')
+type Theme = "dark" | "light";
+
+@customElement('cwc-app')
 export class LitApp extends LitElement {
   static styles = unsafeCSS(styles);
+
+  private _routes = new Router(this, [
+    {path: '/', render: () => html``},
+    {path: '/articles', render: () => html`<cwc-articles-list></cwc-articles-list>`},
+    {path: '/projects', render: () => html``},
+    {path: '/about', render: () => html`<cwc-about></cwc-about>`},
+  ]);
 
   @state()
   blogTitle: string = "cwc1222's blog";
@@ -35,24 +46,60 @@ export class LitApp extends LitElement {
   @state()
   pages: BlogPage[] = [
     {
+      name: "Home",
+      href: "/",
+    },
+    {
       name: "Articles",
-      link: "/articles",
+      href: "/articles",
+    },
+    {
+      name: "Projects",
+      href: "/projects",
     },
     {
       name: "About",
-      link: "/about",
+      href: "/about",
     },
-  ]
+  ];
+
+  @query("slot[name=content]")
+  _slot!: HTMLSlotElement;
 
   @query("#offcanvas-root")
   _offcanvas!: HTMLDivElement;
 
-  toggleMenu() {
+  @query("i[to-theme=light]")
+  iconSun!: HTMLElement;
+
+  @query("i[to-theme=dark]")
+  iconMoon!: HTMLElement;
+
+  toggleMenuEvt() {
     if (this._offcanvas.classList.contains("show")) {
       this._offcanvas.classList.remove("show");
     } else {
       this._offcanvas.classList.add("show");
     }
+  }
+
+  toggleThemeEvt(e: Event) {
+    const ele = e.target as Element;
+    const toTheme = (ele.getAttribute("to-theme") || "dark") as Theme;
+    if (toTheme === "dark") {
+      ele.classList.add("d-none");
+      this.iconSun.classList.remove("d-none");
+    }
+    if (toTheme === "light") {
+      ele.classList.add("d-none");
+      this.iconMoon.classList.remove("d-none");
+    }
+
+    //const event = new CustomEvent('toggle-theme', {
+    //  bubbles: true, composed: true, detail: { toTheme: toTheme },
+    //});
+    //this.dispatchEvent(event);
+    document.querySelector("html")?.setAttribute("data-bs-theme", toTheme);
   }
 
   socialMedias() {
@@ -69,11 +116,10 @@ export class LitApp extends LitElement {
 
   pageItem(p: BlogPage) {
     return html`
-    <li class="list-group-item active">
+    <li class="list-group-item">
       <a 
-        href="${p.link}" 
-        class="list-group-item list-group-item-action active" 
-        aria-current="true"
+        href="${p.href}" 
+        class="list-group-item list-group-item-action" 
       >${p.name}</a>
     </li>
     `;
@@ -85,7 +131,7 @@ export class LitApp extends LitElement {
         <div 
           class="btn" 
           type="button" 
-          @click=${this.toggleMenu}
+          @click=${this.toggleMenuEvt}
         >
           <i class="fa-solid fa-bars"></i>
         </div>
@@ -105,7 +151,7 @@ export class LitApp extends LitElement {
             type="button" 
             class="btn-close" 
             aria-label="Close"
-            @click=${this.toggleMenu}
+            @click=${this.toggleMenuEvt}
           >
           </button>
         </div>
@@ -120,10 +166,15 @@ export class LitApp extends LitElement {
                   height="500"
                   style="max-width: 100px"
                   class="img-fluid img-thumbnail rounded-circle"
+                  loading="lazy"
                 >
                 <span class="fw-bold">${this.blogTitle}</span>
-                <div class="mt-4">
+                <div class="mt-4 p-2">
                   <span class="fs-6">${this.blogSubTitle.map(topic => `${topic}`).join(" | ")}</span>
+                </div>
+                <div class="fs-4 mt-4">
+                  <i @click=${this.toggleThemeEvt} to-theme="dark" class="fa-solid fa-moon d-none"></i>
+                  <i @click=${this.toggleThemeEvt} to-theme="light" class="fa-solid fa-sun"></i>
                 </div>
                 <div class="mt-4">
                   <ul class="m-0 p-0">
@@ -150,16 +201,10 @@ export class LitApp extends LitElement {
           ${this.menu()}
         </div>
         <div class="col-sm-12 col-md-9">
-          <slot></slot>
+          ${this._routes.outlet()}
         </div>
       </div>
     </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-      'lit-app': LitApp,
   }
 }

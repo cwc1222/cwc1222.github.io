@@ -8,21 +8,21 @@
     <meta name="author" content="cwc1222">
     <link rel="icon" href="static/image/favicon.ico" />
     <title>cwc1222's blog</title>
-    <!--
-    <style lang="scss">
-      @import "@static/scss/index.scss";
-      @import "@static/scss/fontawesome.scss";
-    </style>
-    -->
     <style lang="scss">
       @import "@static/scss/index.scss";
     </style>
+    <script>
+      //window.addEventListener("toggle-theme", (e) => {
+      //  const toTheme = e?.detail?.toTheme || "dark";
+      //  document.querySelector("html").setAttribute("data-bs-theme", toTheme);
+      //});
+    </script>
     <script type="module" src="/src/index.ts"></script>
   </head>
   <body>
-    <lit-app>
-      <!-- <i class="fa-regular fa-user"></i> -->
-      <articles-list></articles-list>
-    </lit-app>
+    <cwc-app>
+      <!--<cwc-about></cwc-about>-->
+      <!--<cwc-articles-list></cwc-articles-list>-->
+    </cwc-app>
   </body>
 </html>

@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-@customElement('articles-list')
+@customElement('cwc-articles-list')
 export class ArticlesList extends LitElement {
 
   @property({attribute: false})
@@ -9,7 +9,7 @@ export class ArticlesList extends LitElement {
 
   card(article: any) {
     return html`
-      <div class="card" style="background: #42414c">
+      <div class="card">
         <div class="card-header">Card Header</div>
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
