@@ -1,6 +1,7 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import {query} from 'lit/decorators/query.js';
+import { query } from 'lit/decorators/query.js';
+import { until } from 'lit/directives/until.js';
 import { Router } from '@lit-labs/router';
 
 //import "@static/scss/index.scss";
@@ -10,8 +11,9 @@ import { Router } from '@lit-labs/router';
 import styles from '@static/scss/index.scss?inline';
 import avatar from "@static/image/avatar_500x500.webp";
 
-import "./articles/list.js"
-import "./about/about.js"
+import "./articles/list.js";
+import "./about/about.js";
+import { getArticle } from './lib/articles.js';
 
 type BlogPage = {
   name: string;
@@ -25,10 +27,25 @@ export class LitApp extends LitElement {
   static styles = unsafeCSS(styles);
 
   private _routes = new Router(this, [
-    {path: '/', render: () => html``},
     {path: '/articles', render: () => html`<cwc-articles-list></cwc-articles-list>`},
+    {path: '/articles/:slug', render: ( {slug} ) => {
+      if (!slug) {
+        return html`<h2>404 - Article "${slug}" connot be resolved</h2>`;
+      }
+      const articles = getArticle(slug).then(a => {
+        if (!a) {
+          return html`<h2>Article "${slug}" connot be resolved</h2>`;
+        }
+        return html`<h2>${a.slug} found!</h2>`;
+      });
+      return html`${until(
+        articles,
+        html`<span>Loading ${slug}...</span>`
+      )}`;
+    }},
     {path: '/projects', render: () => html``},
     {path: '/about', render: () => html`<cwc-about></cwc-about>`},
+    {path: '/404', render: () => html`<h2>404 - Page not found</h2>`},
   ]);
 
   @state()
@@ -46,11 +63,7 @@ export class LitApp extends LitElement {
   @state()
   pages: BlogPage[] = [
     {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "Articles",
+      name: "Home/Articles",
       href: "/articles",
     },
     {
@@ -74,6 +87,12 @@ export class LitApp extends LitElement {
 
   @query("i[to-theme=dark]")
   iconMoon!: HTMLElement;
+
+  handleRouteChange(e: CustomEvent<any>) {
+    const route = "/" + e?.detail?.route || "404";
+    history.pushState(null, '', route);
+    this._routes.goto(`${route}`);
+  }
 
   toggleMenuEvt() {
     if (this._offcanvas.classList.contains("show")) {
@@ -195,7 +214,7 @@ export class LitApp extends LitElement {
 
   render() {
     return html`
-    <div class="container-fluid">
+    <div class="container-fluid" @goto-route=${this.handleRouteChange}>
       <div class="row">
         <div class="col-sm-12 col-md-3">
           ${this.menu()}

@@ -2,11 +2,19 @@
 
 declare global {
     import { LitApp } from 'src/index';
+    import { ArticleElement } from "src/articles/article";
+    import { ArticlesList } from "src/articles/list";
+    import { About } from "src/about/about";
 
     interface HTMLElementTagNameMap {
         "cwc-app": LitApp,
+        "cwc-article": ArticleElement,
         "cwc-articles-list": ArticlesList,
         "cwc-about": About,
+    }
+
+    interface WindowEventMap {
+        'goto-route': CustomEvent<any>;
     }
 }
 
@@ -24,19 +32,13 @@ declare module '*.scss' {
 }
 
 declare module '*.md' {
-
-    type MarkdownMetaData = {
-        title: string,
-        description: string,
-        createdAt: Date,
-        tags: Array<string>,
-    }
+    import { ArticleMetaData, ArticleToc } from "src/articles/types";
 
     // "unknown" would be more detailed depends on how you structure frontmatter
-    const attributes: Record<string, MarkdownMetaData>;
+    const attributes: Record<string, ArticleMetaData>;
 
     // When "Mode.TOC" is requested
-    const toc: { level: string, content: string }[];
+    const toc: ArticleToc[];
 
     // When "Mode.HTML" is requested
     const html: string;

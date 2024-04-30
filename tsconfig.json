@@ -16,7 +16,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@static/*": ["static/*"]
+      "@static/*": ["static/*"],
+      "@lib/*": ["src/lib/*"],
     },
 
     /* Linting */
