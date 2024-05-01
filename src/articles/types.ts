@@ -3,6 +3,7 @@ type ArticleMetaData = {
     title: string,
     description: string,
     createdAt: Date,
+    updatedAt?: Date,
     tags: Array<string>,
 }
 
@@ -15,7 +16,6 @@ type Markdown = {
 }
 
 type Article = {
-    fileName: string,
     slug: string,
     toc: ArticleToc,
     attributes: ArticleMetaData;

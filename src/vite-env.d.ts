@@ -35,7 +35,8 @@ declare module '*.md' {
     import { ArticleMetaData, ArticleToc } from "src/articles/types";
 
     // "unknown" would be more detailed depends on how you structure frontmatter
-    const attributes: Record<string, ArticleMetaData>;
+    //const attributes: Record<string, ArticleMetaData>;
+    const attributes: ArticleMetaData;
 
     // When "Mode.TOC" is requested
     const toc: ArticleToc[];

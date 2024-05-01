@@ -17,7 +17,6 @@ export const getArticles = async () => {
             const { attributes, html, toc } = (await resolver()) as Markdown;
 			const postPath = path.split("/");
             return {
-                fileName: postPath[postPath.length - 1],
                 slug: postPath[postPath.length - 1].split(".")[0],
                 toc: toc,
 				attributes: attributes,
