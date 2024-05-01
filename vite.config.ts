@@ -1,6 +1,7 @@
 import Sitemap from 'vite-plugin-sitemap';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import * as mdp from 'vite-plugin-markdown';
+import packageJson from './package.json';
 
 const { plugin: mdPlugin, Mode } = mdp;
 
@@ -19,7 +20,11 @@ export default {
     plugins: [
         tsconfigPaths(),
         mdPlugin({ mode: [Mode.HTML, Mode.TOC] }),
-        Sitemap({dynamicRoutes: [...routes, ...articles]}),
+        Sitemap({
+            hostname: packageJson.homepage,
+            dynamicRoutes: [...routes, ...articles],
+            generateRobotsTxt: true,
+        }),
     ],
     resolve: {
         alias: {
