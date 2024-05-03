@@ -4,12 +4,14 @@ declare global {
     import { LitApp } from 'src/index';
     import { ArticleElement } from "src/articles/article";
     import { ArticlesList } from "src/articles/list";
+    import { ProjectsList } from "src/projects/list";
     import { About } from "src/about/about";
 
     interface HTMLElementTagNameMap {
         "cwc-app": LitApp,
         "cwc-article": ArticleElement,
         "cwc-articles-list": ArticlesList,
+        "cwc-projects-list": ProjectsList,
         "cwc-about": About,
     }
 
