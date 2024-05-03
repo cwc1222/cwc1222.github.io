@@ -5,16 +5,20 @@ import packageJson from './package.json';
 
 const { plugin: mdPlugin, Mode } = mdp;
 
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const routes = [
     "/articles",
     "/projects",
     "/about"
 ]
-const articles = readdirSync("static/markdown/articles")
-    .map(f => f.split(".")[0])
-    .map(f => `/articles/${f}`);
+const articlesPath = resolve("static/markdown/articles");
+const articles = existsSync(articlesPath)
+    ? readdirSync(articlesPath)
+        .map(f => f.split(".")[0])
+        .map(f => `/articles/${f}`)
+    : [];
 
 export default {
     plugins: [
