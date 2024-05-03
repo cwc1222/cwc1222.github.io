@@ -15,6 +15,7 @@
 		"tomoki1207.pdf",
 		"IronGeek.vscode-env",
 		"DanielSanMedium.dscodegpt",
+		"github.vscode-github-actions"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
