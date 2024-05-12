@@ -10,6 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
 		"moduleResolution": "bundler"
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

@@ -9,10 +9,10 @@ declare global {
 		// interface Platform {}
 	}
 
-    import { About } from "src/lib/core/components/litjs/cwcabout";
+    import { ShadowHtmlContainer } from "src/lib/core/components/litjs/cwcshadowdom";
 
     interface HTMLElementTagNameMap {
-        "cwc-about": About,
+        "cwc-shadowdom": ShadowHtmlContainer,
     }
 }
 
