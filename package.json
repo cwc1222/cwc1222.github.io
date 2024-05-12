@@ -1,5 +1,9 @@
 {
-  "name": "tmp",
+  "name": "cwc1222.github.io",
+  "author": "CHUN WEI CHEN",
+  "title": "CWC's Blog",
+  "homepage": "https://cwc1222.github.io",
+  "description": "",
   "version": "0.0.1",
   "private": true,
   "scripts": {

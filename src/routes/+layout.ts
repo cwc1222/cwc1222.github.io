@@ -36,19 +36,19 @@ export const load: LayoutLoad = () => {
 				name: "github",
 				class: "link-secondary",
 				icon: `<i class="fa-brands fa-github"></i>`,
-				url: "",
+				url: "https://github.com/cwc1222",
 			},
 			{
 				name: "linkedin",
 				class: "link-primary",
 				icon: `<i class="fa-brands fa-linkedin"></i>`,
-				url: "",
+				url: "https://www.linkedin.com/in/walker088-391429109",
 			},
 			{
 				name: "rss",
 				class: "link-secondary",
 				icon: `<i class="fa-solid fa-rss"></i>`,
-				url: "",
+				url: "/rss.xml",
 			},
 		]
 	}

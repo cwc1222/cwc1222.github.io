@@ -39,7 +39,7 @@
     <span class="fs-5 fw-bold">{menuInfo.blogTitle}</span>
     <div>
       {#each menuInfo.socialMedias as sm}
-      <a href="{sm.url}" title="{sm.name}" class="{sm.class}">{@html sm.icon}</a>
+      <a href="{sm.url}" title="{sm.name}" class="{sm.class} px-1" target="_blank">{@html sm.icon}</a>
       {/each}
     </div>
     <div>{@html menuInfo.ccMessage}</div>
@@ -99,7 +99,7 @@
         <div class="d-md-block d-none">
           <div>
               {#each menuInfo.socialMedias as sm}
-              <a href="{sm.url}" title="{sm.name}" class="{sm.class} px-1">{@html sm.icon}</a>
+              <a href="{sm.url}" title="{sm.name}" class="{sm.class} px-1" target="_blank">{@html sm.icon}</a>
               {/each}
           </div>
           <div>{@html menuInfo.ccMessage}</div>
