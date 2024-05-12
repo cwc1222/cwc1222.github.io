@@ -25,7 +25,7 @@ const toRssFeed = (articles: Article[]) => {
   `;
 };
 
-export async function GET() {
+export async function GET(): Promise<Response> {
   const headers = {
     'Cache-Control': 'max-age=0, s-maxage=600',
     'Content-Type': 'application/xml',
