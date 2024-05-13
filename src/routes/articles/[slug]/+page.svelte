@@ -7,7 +7,9 @@
 </script>
 
 <svelte:head>
-  <title>Article</title> 
+  <title>Article</title>
+  <meta name="description" content="The article, {data.article.attributes.title}, of cwc1222's blog"/>
+	<meta name="author" content="cwc1222" />
 </svelte:head>
 
 <div>

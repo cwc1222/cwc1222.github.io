@@ -6,16 +6,9 @@
 
 <svelte:head>
     <title>Articles</title> 
+    <meta name="description" content="The artibles list of cwc1222's blog"/>
+	  <meta name="author" content="cwc1222" />
 </svelte:head>
-
-<style lang="scss">
-  .text-truncate-4 {
-    -webkit-line-clamp: 4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
 
 <div>
   <h1>Articles</h1>
