@@ -17,7 +17,7 @@ declare global {
 }
 
 declare module '*.md' {
-    import type { MarkdownMetaData, MarkdownToc } from "$lib/core/article";
+    import type { MarkdownMetaData, MarkdownToc } from "$lib/core/types";
 
     // "unknown" would be more detailed depends on how you structure frontmatter
     //const attributes: Record<string, ArticleMetaData>;

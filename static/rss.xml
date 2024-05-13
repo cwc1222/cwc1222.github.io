@@ -1,0 +1,27 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>CWC's Blog</title>
+      <link>https://cwc1222.github.io</link>
+      <atom:link href="https://cwc1222.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+      <description></description>
+      
+      <item>
+        <title>Reviving a 8-year-old MBP 2015 with Lubuntu</title>
+        <description>A collection of tools' references that I would use in setting up a linux computer.</description>
+        <link>https://cwc1222.github.io/articles/reviving-a-8-year-old-mbp-2015-with-lubuntu.md</link>
+        <guid>https://cwc1222.github.io/articles/reviving-a-8-year-old-mbp-2015-with-lubuntu.md</guid>
+        <pubDate>Wed, 01 May 2024 01:00:00 GMT</pubDate>
+      </item>
+      
+      <item>
+        <title>Build a personal blog using sveltekit</title>
+        <description>At the beginning, I wanted to use litjs to build this website, however, after diving into it for a while, I found it way easier to use a more complete frontend framework, sveltekit, and knew better about what have those modern tool done...</description>
+        <link>https://cwc1222.github.io/articles/build-a-personal-blog-using-sveltekit.md</link>
+        <guid>https://cwc1222.github.io/articles/build-a-personal-blog-using-sveltekit.md</guid>
+        <pubDate>Wed, 01 May 2024 02:00:00 GMT</pubDate>
+      </item>
+      
+    </channel>
+  </rss>
+  
