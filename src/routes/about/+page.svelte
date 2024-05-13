@@ -1,8 +1,14 @@
 <script lang="ts">
 	import '$lib/core/components/litjs/cwcshadowdom';
 
-	import { html as cvHtml, attributes } from '$lib/markdown/about.md';
+	import { html as cvHtml, toc, attributes } from '$lib/markdown/about.md';
 	import cvPdf from '$lib/assets/cv.pdf?url';
+
+	const aboutMd = {
+		html: cvHtml,
+		toc,
+		attributes
+	};
 </script>
 
 <svelte:head>
@@ -25,5 +31,5 @@
 	</span>
 </div>
 <div class="px-3">
-	<cwc-shadowdom htmlCtn={cvHtml}></cwc-shadowdom>
+	<cwc-shadowdom markdown={aboutMd}></cwc-shadowdom>
 </div>

@@ -1,21 +1,11 @@
 import Frontmatter from 'front-matter';
 import { readdirSync, readFileSync } from 'node:fs';
-
 import type { MarkdownMetaData } from '../src/lib/core/types';
-const file = Bun.file('package.json');
-const packageJson = await file.json();
-const articleRoot = 'src/lib/markdown/articles';
-const articles = readdirSync(articleRoot).map((a) => {
-	const rawCtn = readFileSync(`${articleRoot}/${a}`).toString();
-	const fm = Frontmatter<MarkdownMetaData>(rawCtn);
-	const attributes = fm.attributes;
-	return {
-		slug: a,
-		attributes: attributes
-	};
-});
 
-const createRssFeed = async () => {
+const createRssFeed = async (
+	packageJson: any,
+	articles: { slug: string; attributes: MarkdownMetaData }[]
+) => {
 	const feed = `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
@@ -41,4 +31,35 @@ const createRssFeed = async () => {
   `;
 	await Bun.write('./static/rss.xml', feed);
 };
-await createRssFeed();
+
+const file = Bun.file('package.json');
+const packageJson = await file.json();
+const articleRoot = 'src/lib/markdown/articles';
+const articles = readdirSync(articleRoot)
+	.map((a) => {
+		const rawCtn = readFileSync(`${articleRoot}/${a}`).toString();
+		const fm = Frontmatter<MarkdownMetaData>(rawCtn);
+		const attributes = fm.attributes;
+		return {
+			slug: a,
+			attributes: attributes
+		};
+	})
+	.sort((a, b) => {
+		// Desc
+		const d1 = a.attributes.updatedAt
+			? new Date(a.attributes.updatedAt)
+			: new Date(a.attributes.createdAt);
+		const d2 = b.attributes.updatedAt
+			? new Date(b.attributes.updatedAt)
+			: new Date(b.attributes.createdAt);
+		if (d1 > d2) {
+			return -1;
+		}
+		if (d1 < d2) {
+			return 1;
+		}
+		return 0;
+	});
+
+await createRssFeed(packageJson, articles);

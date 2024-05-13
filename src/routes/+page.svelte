@@ -2,9 +2,15 @@
 	import type { PageData } from './$types';
 
 	import '$lib/core/components/litjs/cwcshadowdom';
-	import { html as introHtml } from '$lib/markdown/intro.md';
+	import { html as introHtml, toc, attributes } from '$lib/markdown/intro.md';
 
 	export let data: PageData;
+
+	const introMd = {
+		html: introHtml,
+		toc,
+		attributes
+	};
 </script>
 
 <svelte:head>
@@ -19,7 +25,7 @@
 
 	<div class="row">
 		<div class="col-12 mb-3">
-			<cwc-shadowdom htmlCtn={introHtml}></cwc-shadowdom>
+			<cwc-shadowdom markdown={introMd}></cwc-shadowdom>
 		</div>
 		<hr />
 		<h3 class="mb-4">Recent Posts</h3>

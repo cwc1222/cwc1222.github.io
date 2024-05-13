@@ -2,6 +2,8 @@ import { LitElement, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
+import type { Markdown } from '$lib/core/types';
+
 @customElement('cwc-shadowdom')
 export class ShadowHtmlContainer extends LitElement {
 	static styles = css`
@@ -13,10 +15,10 @@ export class ShadowHtmlContainer extends LitElement {
 		}
 	`;
 
-	@property()
-	htmlCtn!: string;
+	@property({ attribute: false })
+	markdown!: Markdown;
 
 	render() {
-		return unsafeHTML(this.htmlCtn);
+		return unsafeHTML(this.markdown.html);
 	}
 }
