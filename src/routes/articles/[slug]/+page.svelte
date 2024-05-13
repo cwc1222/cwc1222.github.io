@@ -3,6 +3,12 @@
 	import '$lib/core/components/litjs/cwcshadowdom';
 
 	export let data: PageData;
+
+	const articleMd = {
+		html: data.article.html,
+		toc: data.article.toc,
+		attributes: data.article.attributes
+	};
 </script>
 
 <svelte:head>
@@ -18,5 +24,5 @@
 	<h1>Article</h1>
 	<hr />
 
-	<cwc-shadowdom htmlCtn={data.article.html}></cwc-shadowdom>
+	<cwc-shadowdom markdown={articleMd}></cwc-shadowdom>
 </div>
