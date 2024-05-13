@@ -10,9 +10,11 @@ declare global {
 	}
 
 	import { ShadowMarkdownContainer } from 'src/lib/core/components/litjs/cwc-markdown';
+	import { ShadowMarkdownToc } from 'src/lib/core/components/litjs/cwc-markdown-toc';
 
 	interface HTMLElementTagNameMap {
 		'cwc-markdown': ShadowMarkdownContainer;
+		'cwc-markdown-toc': ShadowMarkdownToc;
 	}
 }
 

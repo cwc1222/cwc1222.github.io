@@ -22,7 +22,8 @@ const config = {
 		}),
 		alias: {
 			$bootstrap: 'node_modules/bootstrap',
-			$fortawesome: 'node_modules/@fortawesome'
+			$fortawesome: 'node_modules/@fortawesome',
+			$hljs: 'node_modules/highlight.js'
 		}
 	}
 };

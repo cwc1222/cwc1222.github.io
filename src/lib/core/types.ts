@@ -28,14 +28,14 @@ export type MarkdownMetaData = {
 export type MarkdownToc = { level: string; content: string };
 
 export type Markdown = {
-	toc: MarkdownToc;
+	toc: MarkdownToc[];
 	attributes: MarkdownMetaData;
 	html: string;
 };
 
 export type Article = {
 	slug: string;
-	toc: MarkdownToc;
+	toc: MarkdownToc[];
 	attributes: MarkdownMetaData;
 	html: string;
 };

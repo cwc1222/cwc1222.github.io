@@ -9,7 +9,9 @@ tags:
 
 # Reviving a 8-year-old MBP 2015 with Lubuntu
 
-## TouchPad -- mtrack, xbindkeys, and xdotool
+## TouchPad
+
+### mtrack, xbindkeys, and xdotool
 
 - [xf86-input-mtrack, github.com](https://github.com/p2rkw/xf86-input-mtrack)
 - [Making the best of MacBook Air touchpad on Ubuntu, Sep. 2018](https://int3ractive.com/blog/2018/make-the-best-of-macbook-touchpad-on-ubuntu/)

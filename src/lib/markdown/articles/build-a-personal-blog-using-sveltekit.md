@@ -18,9 +18,18 @@ tags:
 
 ## Goal
 
+### Considerations
+
+```js
+const hello = 'ddd';
+console.log(hello);
+```
+
 ## Blueprint
 
 ## Implemenation
+
+### Vscode
 
 ## Result
 

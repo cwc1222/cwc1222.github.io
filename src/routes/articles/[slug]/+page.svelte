@@ -3,6 +3,7 @@
 	import { getContext } from 'svelte';
 
 	import '$lib/core/components/litjs/cwc-markdown';
+	import '$lib/core/components/litjs/cwc-markdown-toc';
 	import 'giscus';
 	import type { Theme } from '$lib/core/types';
 	import type { Writable } from 'svelte/store';
@@ -35,19 +36,28 @@
 	<h1>Article</h1>
 	<hr />
 
-	<cwc-markdown markdown={articleMd}></cwc-markdown>
-	<giscus-widget
-		repo={data.gitscusConfig.repo}
-		repoid={data.gitscusConfig.repoId}
-		category="Announcements"
-		categoryid={data.gitscusConfig.categoryId}
-		mapping="title"
-		term="Welcome to giscus!"
-		reactionsenabled="1"
-		emitmetadata="0"
-		inputposition="top"
-		{theme}
-		lang="en"
-		loading="lazy"
-	></giscus-widget>
+	<div class="row">
+		<div class="col-12 col-md-10">
+			<cwc-markdown markdown={articleMd}></cwc-markdown>
+		</div>
+		<div class="d-none d-md-block col-12 col-md-2 toc-wrapper">
+			<cwc-markdown-toc toc={articleMd.toc}></cwc-markdown-toc>
+		</div>
+		<div class="col-12">
+			<giscus-widget
+				repo={data.gitscusConfig.repo}
+				repoid={data.gitscusConfig.repoId}
+				category="Announcements"
+				categoryid={data.gitscusConfig.categoryId}
+				mapping="title"
+				term="Welcome to giscus!"
+				reactionsenabled="1"
+				emitmetadata="0"
+				inputposition="top"
+				{theme}
+				lang="en"
+				loading="lazy"
+			></giscus-widget>
+		</div>
+	</div>
 </div>
