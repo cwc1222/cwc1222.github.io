@@ -1,10 +1,16 @@
 import type { LayoutLoad } from './$types';
-import type { MenuInfo } from '$lib/core/types';
+import type { MenuInfo, Theme } from '$lib/core/types';
 import avatar from '$lib/assets/avatar_500x500.webp';
 
 export const prerender = true;
 
 export const load: LayoutLoad = () => {
+	const gitscusConfig = {
+		repo: 'cwc1222/cwc1222.github.io',
+		repoId: 'R_kgDOLvsFtg',
+		categoryId: 'DIC_kwDOLvsFts4CfVRU'
+	};
+	const defaultTheme: Theme = 'dark';
 	const menuInfo: MenuInfo = {
 		avatar: avatar,
 		blogTitle: "cwc1222's blog",
@@ -52,5 +58,9 @@ export const load: LayoutLoad = () => {
 			}
 		]
 	};
-	return menuInfo;
+	return {
+		defaultTheme,
+		gitscusConfig,
+		menuInfo
+	};
 };
