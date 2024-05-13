@@ -1,13 +1,14 @@
 <script lang="ts">
   import "$lib/core/components/litjs/cwcshadowdom";
 
-  import { attributes } from '$lib/markdown/about.md';
+  import { html as cvHtml, attributes } from '$lib/markdown/about.md';
   import cvPdf from '$lib/assets/cv.pdf?url';
-  import { html as cvHtml } from '$lib/markdown/about.md';
 </script>
 
 <svelte:head>
-    <title>About</title> 
+    <title>About</title>
+    <meta name="description" content="The about page of cwc1222"/>
+	  <meta name="author" content="cwc1222" />
 </svelte:head>
 
 <div>
