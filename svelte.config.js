@@ -21,9 +21,9 @@ const config = {
 			strict: true
 		}),
 		alias: {
-			"$bootstrap": "node_modules/bootstrap",
-            "$fortawesome": "node_modules/@fortawesome",
-		},
+			$bootstrap: 'node_modules/bootstrap',
+			$fortawesome: 'node_modules/@fortawesome'
+		}
 	}
 };
 

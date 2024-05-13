@@ -1,37 +1,37 @@
 $enable-dark-mode: true;
 $color-mode-type: data;
 
-@import "$bootstrap/scss/bootstrap.scss";
+@import '$bootstrap/scss/bootstrap.scss';
 
-$fa-font-path: "$fortawesome/fontawesome-free/webfonts";
-@import "$fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "$fortawesome/fontawesome-free/scss/solid.scss";
-@import "$fortawesome/fontawesome-free/scss/brands.scss";
-@import "$fortawesome/fontawesome-free/scss/regular.scss";
+$fa-font-path: '$fortawesome/fontawesome-free/webfonts';
+@import '$fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '$fortawesome/fontawesome-free/scss/solid.scss';
+@import '$fortawesome/fontawesome-free/scss/brands.scss';
+@import '$fortawesome/fontawesome-free/scss/regular.scss';
 
 $body-margin: 1.5rem;
 
 @mixin body-layout {
-    margin: $body-margin;
+	margin: $body-margin;
 }
 
 $line-clamps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 @each $line in $line-clamps {
-    .text-truncate-#{$line} {
-        -webkit-line-clamp: $line;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+	.text-truncate-#{$line} {
+		-webkit-line-clamp: $line;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
 }
 
 body {
-    @include body-layout;
+	@include body-layout;
 }
 
 @include media-breakpoint-up(md) {
-    .menu {
-        position: sticky;
-        top: $body-margin;
-    }
+	.menu {
+		position: sticky;
+		top: $body-margin;
+	}
 }
