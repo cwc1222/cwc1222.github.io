@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	import '$lib/core/components/litjs/cwcshadowdom';
+	import '$lib/core/components/litjs/cwc-markdown';
 	import { html as introHtml, toc, attributes } from '$lib/markdown/intro.md';
 
 	export let data: PageData;
@@ -25,7 +25,7 @@
 
 	<div class="row">
 		<div class="col-12 mb-3">
-			<cwc-shadowdom markdown={introMd}></cwc-shadowdom>
+			<cwc-markdown markdown={introMd}></cwc-markdown>
 		</div>
 		<hr />
 		<h3 class="mb-4">Recent Posts</h3>

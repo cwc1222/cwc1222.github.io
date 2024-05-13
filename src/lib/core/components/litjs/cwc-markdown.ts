@@ -4,8 +4,8 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import type { Markdown } from '$lib/core/types';
 
-@customElement('cwc-shadowdom')
-export class ShadowHtmlContainer extends LitElement {
+@customElement('cwc-markdown')
+export class ShadowMarkdownContainer extends LitElement {
 	static styles = css`
 		p {
 			font-size: 1.1rem;
@@ -19,6 +19,6 @@ export class ShadowHtmlContainer extends LitElement {
 	markdown!: Markdown;
 
 	render() {
-		return unsafeHTML(this.markdown.html);
+		return unsafeHTML(this.markdown?.html || "<p>Loading...</p>");
 	}
 }

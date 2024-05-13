@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '$lib/core/components/litjs/cwcshadowdom';
+	import '$lib/core/components/litjs/cwc-markdown';
 
 	import { html as cvHtml, toc, attributes } from '$lib/markdown/about.md';
 	import cvPdf from '$lib/assets/cv.pdf?url';
@@ -31,5 +31,5 @@
 	</span>
 </div>
 <div class="px-3">
-	<cwc-shadowdom markdown={aboutMd}></cwc-shadowdom>
+	<cwc-markdown markdown={aboutMd}></cwc-markdown>
 </div>
