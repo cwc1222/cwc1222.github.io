@@ -16,6 +16,12 @@ declare global {
 		'cwc-markdown': ShadowMarkdownContainer;
 		'cwc-markdown-toc': ShadowMarkdownToc;
 	}
+
+	import { Theme } from '$lib/core/types';
+	interface WindowEventMap {
+		'toggle-theme': CustomEvent<{ toTheme: Theme; }>;
+		'scroll-anchor': CustomEvent<{ toAnchor: string; }>;
+	}
 }
 
 declare module '*.md' {

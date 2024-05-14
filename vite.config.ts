@@ -2,6 +2,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 
 import * as mdp from 'vite-plugin-markdown';
 import { default as anchorPlugin } from 'markdown-it-anchor';
+import slugify from '@sindresorhus/slugify';
 import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
 
@@ -15,7 +16,7 @@ const md = markdownit({
 
 		return ''; // use external default escaping
 	}
-}).use(anchorPlugin);
+}).use(anchorPlugin, { slugify });
 
 import { defineConfig } from 'vitest/config';
 
