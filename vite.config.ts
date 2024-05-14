@@ -6,7 +6,6 @@ import markdownit from 'markdown-it';
 import hljs from 'highlight.js';
 
 const md = markdownit({
-	linkify: true,
 	highlight: function (str, lang) {
 		if (lang && hljs.getLanguage(lang)) {
 			try {
