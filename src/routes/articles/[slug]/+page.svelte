@@ -3,7 +3,6 @@
 	import type { Writable } from 'svelte/store';
 	import type { Theme } from '$lib/core/types';
 
-	import 'giscus';
 	import { getContext } from 'svelte';
 	import Article from '$lib/core/components/Article.svelte';
 
@@ -14,6 +13,12 @@
 	themeStore.subscribe((updated) => {
 		theme = updated;
 	});
+
+	const giscus = {
+		repo: data.gitscusConfig.repo,
+		repoId: data.gitscusConfig.repoId,
+		categoryId: data.gitscusConfig.categoryId
+	};
 </script>
 
 <svelte:head>
@@ -28,19 +33,5 @@
 <div>
 	<h1>Article</h1>
 	<hr />
-	<Article compiledMd={data.article.html} toc={data.article.toc}></Article>
-	<giscus-widget
-		repo={data.gitscusConfig.repo}
-		repoid={data.gitscusConfig.repoId}
-		category="Announcements"
-		categoryid={data.gitscusConfig.categoryId}
-		mapping="title"
-		term="Welcome to giscus!"
-		reactionsenabled="1"
-		emitmetadata="0"
-		inputposition="top"
-		{theme}
-		lang="en"
-		loading="lazy"
-	></giscus-widget>
+	<Article compiledMd={data.article.html} toc={data.article.toc} {giscus} bind:theme></Article>
 </div>
