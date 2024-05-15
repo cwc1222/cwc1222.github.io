@@ -8,20 +8,6 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-
-	import { ShadowMarkdownContainer } from 'src/lib/core/components/litjs/cwc-markdown';
-	import { ShadowMarkdownToc } from 'src/lib/core/components/litjs/cwc-markdown-toc';
-
-	interface HTMLElementTagNameMap {
-		'cwc-markdown': ShadowMarkdownContainer;
-		'cwc-markdown-toc': ShadowMarkdownToc;
-	}
-
-	import { Theme } from '$lib/core/types';
-	interface WindowEventMap {
-		'toggle-theme': CustomEvent<{ toTheme: Theme; }>;
-		'scroll-anchor': CustomEvent<{ toAnchor: string; }>;
-	}
 }
 
 declare module '*.md' {

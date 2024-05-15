@@ -9,12 +9,7 @@
 	const toggleThemeEvt = (e: Event) => {
 		const ele = e.target as HTMLElement;
 		theme = (ele?.dataset?.toTheme || 'dark') as Theme;
-		const event = new CustomEvent('toggle-theme', {
-			bubbles: true,
-			composed: true,
-			detail: { toTheme: theme }
-		});
-		dispatchEvent(event);
+		document.querySelector('html')?.setAttribute('data-bs-theme', theme);
 	};
 
 	let offcanvas: HTMLDivElement;

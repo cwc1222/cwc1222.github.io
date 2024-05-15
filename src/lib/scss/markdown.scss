@@ -1,0 +1,75 @@
+@import '$hljs/scss/arta.scss';
+
+.markdown-container {
+	h1 {
+		font-size: 2rem;
+		font-weight: 650;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	h2 {
+		font-size: 1.6rem;
+		font-weight: 600;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+	h3 {
+		font-size: 1.3rem;
+		font-weight: 550;
+		margin-top: 0.8rem;
+		margin-bottom: 0.8rem;
+	}
+	h4 {
+		font-size: 1rem;
+		font-weight: 500;
+		margin-bottom: 0.6rem;
+	}
+	ul {
+		margin-bottom: 1.2rem;
+		li {
+			font-size: 1rem;
+			margin-bottom: 0.2rem;
+		}
+	}
+	p {
+		font-size: 1.1rem;
+		line-height: 1.7rem;
+	}
+	pre {
+		font-size: 1.1rem;
+	}
+}
+
+.toc {
+	color: grey;
+
+	h2 {
+		font-size: 1rem;
+		font-weight: bold;
+	}
+	hr {
+		margin: 1rem 0;
+		border: 0;
+		border-top: 1px solid;
+		opacity: 0.25;
+	}
+	ol {
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style: none;
+	}
+	li {
+		margin-bottom: 0.25rem;
+	}
+	a:not(:hover) {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	$levels: 1, 2, 3, 4, 5, 6;
+	@each $lvl in $levels {
+		.level-#{$lvl} {
+			margin-left: $lvl * 0.3rem;
+		}
+	}
+}

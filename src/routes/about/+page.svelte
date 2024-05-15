@@ -1,14 +1,8 @@
 <script lang="ts">
-	import '$lib/core/components/litjs/cwc-markdown';
+	import Markdown from '$lib/core/components/Markdown.svelte';
 
-	import { html as cvHtml, toc, attributes } from '$lib/markdown/about.md';
+	import { html as cvHtml, attributes } from '$lib/markdown/about.md';
 	import cvPdf from '$lib/assets/cv.pdf?url';
-
-	const aboutMd = {
-		html: cvHtml,
-		toc,
-		attributes
-	};
 </script>
 
 <svelte:head>
@@ -31,5 +25,5 @@
 	</span>
 </div>
 <div class="px-3">
-	<cwc-markdown markdown={aboutMd}></cwc-markdown>
+	<Markdown compiledMd={cvHtml}></Markdown>
 </div>

@@ -33,9 +33,15 @@ export type Markdown = {
 	html: string;
 };
 
+export type TocTree = {
+	level: number;
+	content: string;
+	children: TocTree[];
+};
+
 export type Article = {
 	slug: string;
-	toc: MarkdownToc[];
+	toc: TocTree;
 	attributes: MarkdownMetaData;
 	html: string;
 };
