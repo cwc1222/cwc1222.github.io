@@ -41,7 +41,7 @@ const articles = readdirSync(articleRoot)
 		const fm = Frontmatter<MarkdownMetaData>(rawCtn);
 		const attributes = fm.attributes;
 		return {
-			slug: a,
+			slug: a.split('.')[0],
 			attributes: attributes
 		};
 	})
