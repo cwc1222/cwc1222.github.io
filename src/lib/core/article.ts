@@ -23,7 +23,7 @@ class ArticleManager {
 	}
 
 	private async loadArticles() {
-		const articleMds = Object.entries(import.meta.glob('/src/lib/markdown/articles/*.md'));
+		const articleMds = Object.entries(import.meta.glob('/src/lib/markdown/articles/**/*.md'));
 		const articlesLst = Promise.all(
 			articleMds.map(async ([path, resolver]) => {
 				const { attributes, html, toc } = (await resolver()) as Markdown;

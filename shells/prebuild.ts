@@ -1,5 +1,6 @@
 import Frontmatter from 'front-matter';
 import { readdirSync, readFileSync } from 'node:fs';
+import { Glob } from "bun";
 import type { MarkdownMetaData } from '../src/lib/core/types';
 
 const createRssFeed = async (
@@ -34,32 +35,36 @@ const createRssFeed = async (
 
 const file = Bun.file('package.json');
 const packageJson = await file.json();
-const articleRoot = 'src/lib/markdown/articles';
-const articles = readdirSync(articleRoot)
-	.map((a) => {
-		const rawCtn = readFileSync(`${articleRoot}/${a}`).toString();
-		const fm = Frontmatter<MarkdownMetaData>(rawCtn);
-		const attributes = fm.attributes;
-		return {
-			slug: a.split('.')[0],
-			attributes: attributes
-		};
-	})
-	.sort((a, b) => {
-		// Desc
-		const d1 = a.attributes.updatedAt
-			? new Date(a.attributes.updatedAt)
-			: new Date(a.attributes.createdAt);
-		const d2 = b.attributes.updatedAt
-			? new Date(b.attributes.updatedAt)
-			: new Date(b.attributes.createdAt);
-		if (d1 > d2) {
-			return -1;
-		}
-		if (d1 < d2) {
-			return 1;
-		}
-		return 0;
-	});
+
+const glob = new Glob("src/lib/markdown/articles/**/*.md");
+let articles: {slug: string, attributes: MarkdownMetaData}[] = [];
+for await (const file of glob.scan(".")) {
+	const splitedPath = file.split('/')
+
+	const rawCtn = readFileSync(file).toString();
+	const fm = Frontmatter<MarkdownMetaData>(rawCtn);
+	const attributes = fm.attributes;
+	articles = [...articles, {
+		slug: splitedPath[splitedPath.length-1].split('.')[0],
+		attributes: attributes
+	}]
+}
+
+articles.sort((a, b) => {
+	// Desc
+	const d1 = a.attributes.updatedAt
+		? new Date(a.attributes.updatedAt)
+		: new Date(a.attributes.createdAt);
+	const d2 = b.attributes.updatedAt
+		? new Date(b.attributes.updatedAt)
+		: new Date(b.attributes.createdAt);
+	if (d1 > d2) {
+		return -1;
+	}
+	if (d1 < d2) {
+		return 1;
+	}
+	return 0;
+});
 
 await createRssFeed(packageJson, articles);

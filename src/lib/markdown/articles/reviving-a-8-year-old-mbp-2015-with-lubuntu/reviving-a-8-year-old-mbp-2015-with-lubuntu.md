@@ -1,6 +1,7 @@
 ---
 title: Reviving a 8-year-old MBP 2015 with Lubuntu
 description: A collection of tools' references that I would use in setting up a linux computer.
+lang: en-us
 createdAt: 2024-04-30 21:00:00 -04:00
 tags:
   - lubuntu
