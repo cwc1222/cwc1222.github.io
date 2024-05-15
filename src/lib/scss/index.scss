@@ -34,4 +34,10 @@ body {
 		position: sticky;
 		top: $body-margin;
 	}
+	.toc-wrapper {
+		position: sticky;
+		top: 2rem;
+		height: fit-content;
+		max-height: -moz-max-content;
+	}
 }

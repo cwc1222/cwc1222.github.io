@@ -13,11 +13,6 @@
 			}
 			gtag('js', new Date());
 			gtag('config', 'G-1JV03QPTGW');
-
-			window.addEventListener('toggle-theme', (e) => {
-				const toTheme = e?.detail?.toTheme || 'dark';
-				document.querySelector('html').setAttribute('data-bs-theme', toTheme);
-			});
 		</script>
 		%sveltekit.head%
 	</head>

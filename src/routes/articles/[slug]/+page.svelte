@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { getContext } from 'svelte';
-
-	import '$lib/core/components/litjs/cwcshadowdom';
-	import 'giscus';
-	import type { Theme } from '$lib/core/types';
 	import type { Writable } from 'svelte/store';
+	import type { Theme } from '$lib/core/types';
+
+	import 'giscus';
+	import { getContext } from 'svelte';
+	import Article from '$lib/core/components/Article.svelte';
 
 	export let data: PageData;
 
@@ -14,12 +14,6 @@
 	themeStore.subscribe((updated) => {
 		theme = updated;
 	});
-
-	const articleMd = {
-		html: data.article.html,
-		toc: data.article.toc,
-		attributes: data.article.attributes
-	};
 </script>
 
 <svelte:head>
@@ -34,8 +28,7 @@
 <div>
 	<h1>Article</h1>
 	<hr />
-
-	<cwc-shadowdom markdown={articleMd}></cwc-shadowdom>
+	<Article compiledMd={data.article.html} toc={data.article.toc}></Article>
 	<giscus-widget
 		repo={data.gitscusConfig.repo}
 		repoid={data.gitscusConfig.repoId}

@@ -8,12 +8,6 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-
-	import { ShadowHtmlContainer } from 'src/lib/core/components/litjs/cwcshadowdom';
-
-	interface HTMLElementTagNameMap {
-		'cwc-shadowdom': ShadowHtmlContainer;
-	}
 }
 
 declare module '*.md' {

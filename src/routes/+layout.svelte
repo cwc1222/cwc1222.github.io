@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '$lib/scss/index.scss';
-	import Menu from '$lib/core/components/svelte/Menu.svelte';
+	import Menu from '$lib/core/components/Menu.svelte';
 
 	import { setContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
@@ -12,7 +12,6 @@
 	const blogTheme: Writable<Theme> = writable(data.defaultTheme);
 	setContext('blog-theme', blogTheme);
 	$: {
-		//console.log(`layout theme changed to ${data.defaultTheme}`);
 		blogTheme.set(data.defaultTheme);
 	}
 </script>
