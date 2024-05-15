@@ -45,6 +45,12 @@ export const load: LayoutLoad = () => {
 				url: 'https://github.com/cwc1222'
 			},
 			{
+				name: 'x-twitter',
+				class: 'link-secondary',
+				icon: `<i class="fa-brands fa-x-twitter"></i>`,
+				url: 'https://twitter.com/walker0881'
+			},
+			{
 				name: 'linkedin',
 				class: 'link-primary',
 				icon: `<i class="fa-brands fa-linkedin"></i>`,

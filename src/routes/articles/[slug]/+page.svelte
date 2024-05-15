@@ -28,6 +28,7 @@
 		content="The article, {data.article.attributes.title}, of cwc1222's blog"
 	/>
 	<meta name="author" content="cwc1222" />
+	<meta http-equiv="content-language" content="{data.article.attributes.lang}">
 </svelte:head>
 
 <div>
