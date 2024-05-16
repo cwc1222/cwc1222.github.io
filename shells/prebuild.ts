@@ -1,6 +1,6 @@
 import Frontmatter from 'front-matter';
 import { readdirSync, readFileSync } from 'node:fs';
-import { Glob } from "bun";
+import { Glob } from 'bun';
 import type { MarkdownMetaData } from '../src/lib/core/types';
 
 const createRssFeed = async (
@@ -36,18 +36,21 @@ const createRssFeed = async (
 const file = Bun.file('package.json');
 const packageJson = await file.json();
 
-const glob = new Glob("src/lib/markdown/articles/**/*.md");
-let articles: {slug: string, attributes: MarkdownMetaData}[] = [];
-for await (const file of glob.scan(".")) {
-	const splitedPath = file.split('/')
+const glob = new Glob('src/lib/markdown/articles/**/*.md');
+let articles: { slug: string; attributes: MarkdownMetaData }[] = [];
+for await (const file of glob.scan('.')) {
+	const splitedPath = file.split('/');
 
 	const rawCtn = readFileSync(file).toString();
 	const fm = Frontmatter<MarkdownMetaData>(rawCtn);
 	const attributes = fm.attributes;
-	articles = [...articles, {
-		slug: splitedPath[splitedPath.length-1].split('.')[0],
-		attributes: attributes
-	}]
+	articles = [
+		...articles,
+		{
+			slug: splitedPath[splitedPath.length - 1].split('.')[0],
+			attributes: attributes
+		}
+	];
 }
 
 articles.sort((a, b) => {
