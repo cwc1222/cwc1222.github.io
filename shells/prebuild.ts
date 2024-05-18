@@ -1,5 +1,5 @@
 import Frontmatter from 'front-matter';
-import { readdirSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { Glob } from "bun";
 import type { MarkdownMetaData } from '../src/lib/core/types';
 
@@ -22,7 +22,7 @@ const createRssFeed = async (
         <description>${p.attributes.description}</description>
         <link>${packageJson.homepage}/articles/${p.slug}</link>
         <guid>${packageJson.homepage}/articles/${p.slug}</guid>
-        <pubDate>${new Date(p.attributes.createdAt).toUTCString()}</pubDate>
+        <pubDate>${p.attributes.updatedAt? p.attributes.updatedAt.toUTCString() : p.attributes.createdAt.toUTCString()}</pubDate>
       </item>
       `
 				)
@@ -53,11 +53,11 @@ for await (const file of glob.scan(".")) {
 articles.sort((a, b) => {
 	// Desc
 	const d1 = a.attributes.updatedAt
-		? new Date(a.attributes.updatedAt)
-		: new Date(a.attributes.createdAt);
+		? a.attributes.updatedAt
+		: a.attributes.createdAt;
 	const d2 = b.attributes.updatedAt
-		? new Date(b.attributes.updatedAt)
-		: new Date(b.attributes.createdAt);
+		? b.attributes.updatedAt
+		: b.attributes.createdAt;
 	if (d1 > d2) {
 		return -1;
 	}
