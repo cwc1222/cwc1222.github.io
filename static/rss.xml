@@ -7,6 +7,14 @@
       <description></description>
       
       <item>
+        <title>Make your github profile README self updated</title>
+        <description>TL;DR, introducing a way to update your github profile readme automatically using golang and github action.</description>
+        <link>https://cwc1222.github.io/articles/make-your-github-profile-readme-self-updated</link>
+        <guid>https://cwc1222.github.io/articles/make-your-github-profile-readme-self-updated</guid>
+        <pubDate>Sat, 18 May 2024 23:30:00 GMT</pubDate>
+      </item>
+      
+      <item>
         <title>Build a personal blog using sveltekit</title>
         <description>At the beginning, I wanted to use litjs to build this website, however, after diving into it for a while, I found it way easier to use a more complete frontend framework, sveltekit, and knew better about what have those modern tool done...</description>
         <link>https://cwc1222.github.io/articles/build-a-personal-blog-using-sveltekit</link>
