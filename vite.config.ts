@@ -5,8 +5,8 @@ import { vitePluginMarkdown } from './vite-plugin-md';
 // const { plugin: mdPlugin, Mode } = mdp;
 
 export default defineConfig({
-	plugins: [sveltekit(), vitePluginMarkdown({})]
-	//test: {
-	//	include: ['src/**/*.{test,spec}.{js,ts}']
-	//}
+	plugins: [sveltekit(), vitePluginMarkdown({})],
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
 });
