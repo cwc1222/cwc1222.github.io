@@ -20,16 +20,18 @@ export type MenuInfo = {
 export type MarkdownMetaData = {
 	title: string;
 	description: string;
-	lang: "en-us" | "zh-tw" | "es-py";
+	lang: 'en-us' | 'zh-tw' | 'es-py';
 	createdAt: Date;
 	updatedAt?: Date;
 	tags: Array<string>;
+	serie: Array<string>;
+	mermaid: Boolean;
 };
 
 export type MarkdownToc = { level: string; content: string };
 
 export type Markdown = {
-	toc: MarkdownToc[];
+	toc: TocTree;
 	attributes: MarkdownMetaData;
 	html: string;
 };

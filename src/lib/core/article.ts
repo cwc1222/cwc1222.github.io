@@ -1,26 +1,9 @@
-import type { Markdown, MarkdownToc, TocTree, Article } from '$lib/core/types';
+import type { Markdown, Article } from '$lib/core/types';
 
 class ArticleManager {
+	// TODO: Use a map instead
 	#articles: Article[] = [];
 	#numberOfArticles: number | null = null;
-
-	private buildTree(toc: MarkdownToc[], index: number): [TocTree, number] {
-		const currentLevel = +toc[index].level;
-		const currentNode: TocTree = {
-			level: currentLevel,
-			content: toc[index].content,
-			children: []
-		};
-
-		let i = index + 1;
-		while (i < toc.length && +toc[i].level > currentLevel) {
-			const [childNode, nextIndex] = this.buildTree(toc, i);
-			currentNode.children.push(childNode);
-			i = nextIndex;
-		}
-
-		return [currentNode, i];
-	}
 
 	private async loadArticles() {
 		const articleMds = Object.entries(import.meta.glob('/src/lib/markdown/articles/**/*.md'));
@@ -29,8 +12,8 @@ class ArticleManager {
 				const { attributes, html, toc } = (await resolver()) as Markdown;
 				const postPath = path.split('/');
 				return {
-					slug: postPath[postPath.length - 1].split('.')[0],
-					toc: this.buildTree(toc, 0)[0],
+					slug: postPath[postPath.length - 2],
+					toc: toc,
 					attributes: attributes,
 					html: html
 				};

@@ -18,7 +18,7 @@
 		{#each data.articles as a}
 			<div class="card mb-3">
 				{#await import(`$lib/markdown/articles/${a.slug}/cover-1024x512.webp`) then { default: src }}
-				<img {src} width="1024" height="512" class="card-img-top" alt="article cover">
+					<img {src} width="1024" height="512" class="card-img-top" alt="article cover" />
 				{/await}
 				<div class="card-body">
 					<h2 class="card-title fs-4 text-uppercase">{a.attributes.title}</h2>

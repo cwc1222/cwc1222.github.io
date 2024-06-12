@@ -12,6 +12,8 @@ tags:
   - bun
   - markdown
   - ghpage
+serie: ddd
+mermaid: false
 ---
 
 # Build a personal blog using litjs

@@ -11,14 +11,14 @@ declare global {
 }
 
 declare module '*.md' {
-	import type { MarkdownMetaData, MarkdownToc } from '$lib/core/types';
+	import type { MarkdownMetaData, TocTree } from '$lib/core/types';
 
 	// "unknown" would be more detailed depends on how you structure frontmatter
 	//const attributes: Record<string, ArticleMetaData>;
 	const attributes: MarkdownMetaData;
 
 	// When "Mode.TOC" is requested
-	const toc: MarkdownToc[];
+	const toc: TocTree;
 
 	// When "Mode.HTML" is requested
 	const html: string;
