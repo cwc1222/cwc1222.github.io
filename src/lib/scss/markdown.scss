@@ -31,12 +31,28 @@
 			margin-bottom: 0.2rem;
 		}
 	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
 	p {
 		font-size: 1.1rem;
 		line-height: 1.7rem;
 	}
 	pre {
+		border-style: solid;
+		border-radius: 10px;
+		border-color: grey;
+		border-spacing: 0;
+		border-collapse: collapse;
+		margin-top: 1.6rem;
+		margin-bottom: 1.6rem;
+		padding: 0.8rem;
 		font-size: 1.1rem;
+
+		.mermaid svg {
+			max-width: inherit !important;
+		}
 	}
 }
 
